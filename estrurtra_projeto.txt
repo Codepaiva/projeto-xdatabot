@@ -1,7 +1,6 @@
 XDataBot/
 │
-├── data/
-│   └── Histórico_UEX/
+├── Histórico_UEX/
 │
 ├── src/
 │   │
@@ -23,5 +22,4 @@ XDataBot/
 │
 ├── .env (Deve ser criado um com as credências do sistema)
 ├── .gitignore
-├── pyproject.toml
 └── README.md

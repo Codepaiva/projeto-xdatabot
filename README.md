@@ -31,9 +31,10 @@ O projeto foi desenvolvido com foco em automatizar consultas operacionais em sis
 ```python
 XDataBot/
 │
-├── Histórico/
 │
 ├── src/
+|   └── data/
+|   |   └── Histórico/
 │   │
 │   ├── pages/
 │   │   ├── login.py

@@ -1,10 +1,10 @@
 # Xdatabot
 
-Automação desenvolvida em Python para extração de históricos processuais no Sistema de Gestão de Prestação de Contas (SIGPC), com exportação de relatórios formatados em Excel.
+Automação desenvolvida em Python para extração de históricos processuais em sistema web legado.
 
 ## Objetivo
 
-O projeto foi desenvolvido com foco em automatizar consultas operacionais relacionadas às análises de suspensão de inadimplência de UExs (Unidades Executoras Próprias), reduzindo trabalho manual de navegação, coleta e organização de dados históricos.
+O projeto foi desenvolvido com foco em automatizar consultas operacionais em sistema web legado, reduzindo trabalho manual de navegação, coleta e organização de dados históricos.
 
 
 ## Tecnologias Utilizadas
@@ -31,16 +31,15 @@ O projeto foi desenvolvido com foco em automatizar consultas operacionais relaci
 ```python
 XDataBot/
 │
-├── data/
-│   └── Histórico_UEX/
+├── Histórico/
 │
 ├── src/
 │   │
 │   ├── pages/
 │   │   ├── login.py
 │   │   ├── menu.py
-│   │   ├── uex_form.py
-│   │   └── uex_list.py
+│   │   ├── form.py
+│   │   └── list.py
 │   │
 │   ├── services/
 │   │   ├── export_excel_service.py
@@ -56,7 +55,6 @@ XDataBot/
 ├── .gitignore
 └── README.md
 ```
-![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Como exercutar?
 
@@ -105,7 +103,7 @@ OBS.: Não é recomendável mexer no computador enquanto a automação está sen
 ### 6) Extração realizada
 Ao final da execução será gerado a seguinte estrutura de pasta:
 ```bash
-Histórico_UEX/
+Histórico/
     └── 202x/ # Ano
         └── 0x/ # mês
             └── xx/  # dia

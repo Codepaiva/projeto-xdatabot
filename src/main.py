@@ -8,15 +8,27 @@ from settings.config import Settings
 
 from pages.login import NavegationLogin
 from pages.menu import NavegationMenu
-from pages.uex_form import NavegationFormUex
-from pages.uex_list import NavegationListUex
+from pages.form import NavegationFormUex
+from pages.data_list import NavegationListUex
 
 
 
 
 class XdataBot:
-  def __init__(self, cnpj):
+  def __init__(self):
+    pass
+  
+  def user_input_cnpj(self):
+    cnpj = input('Insira o CNPJ: ')
+  
+    if not cnpj:
+      print('Insira um CNPJ válido, por favor.')
+      
+    return cnpj
+    
+  def run_bot(self, cnpj):
     self.settings = Settings()  # type: ignore
+    
 
     self.driver_chrome = webdriver.Chrome()
     self.driver_chrome.get(self.settings.URL)
@@ -34,7 +46,7 @@ class XdataBot:
 
     # step menu:
     self.menu.element_button_search()
-    self.menu.element_button_search_situation_uex()
+    self.menu.element_button_search_situation()
 
     # step form:
     self.form_uex.element_drop_down_situation()
@@ -42,15 +54,13 @@ class XdataBot:
     self.form_uex.element_input_cnpj_code(cnpj)
     self.form_uex.element_button_search()
 
-    # step list operation uex:
-    self.list_uex.element_list_uex()
-
+    # step list operation:
+    self.list_uex.element_list()
+    
 
 
 if __name__ == '__main__':
-  cnpj = input('Insira o CNPJ: ')
+  bot = XdataBot()
+  cnpj = bot.user_input_cnpj()
   
-  if not cnpj:
-    print('Insira um CNPJ, por favor.')
-    
-  XdataBot(cnpj)
+  bot.run_bot(cnpj)

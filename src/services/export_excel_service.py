@@ -42,7 +42,7 @@ class ExctractDate:
 class ExcelService():
     """
     Gera arquivo .xlsx e gerencia o rastreamento do arquivo gerado.\n
-    O relatório será salvo em Histórico_UEX/ano/mes/dia/...
+    O relatório será salvo em Histórico/ano/mes/dia/...
     """
     def __init__(self):
         self.date = ExctractDate()
@@ -51,7 +51,7 @@ class ExcelService():
     def create_path(self):
         path_root = pathlib.Path.cwd()
 
-        path_records = path_root / 'Histórico_UEX' / self.date.extract_year_date() / self.date.extract_month_date() / self.date.extract_day_date()
+        path_records = path_root / 'data' / 'Histórico' / self.date.extract_year_date() / self.date.extract_month_date() / self.date.extract_day_date()
 
         if os.path.isdir(path_records):
             pass
@@ -80,14 +80,14 @@ class ExcelService():
 
         # Cabeçalho - Histórico
         header_columns_history = [
-             'Data de envio',
-             'Situação OPC UEx',
-             'Situação PC EEx',
-             'Situação OPC EEx',
-             'Efeito Suspensivo UEx',
-             'Efeito Suspensivo EEx',
-             'Apta Pagamento',
-             'Situação do Envio',
+             'Column01',
+             'Column02',
+             'Column03',
+             'Column04',
+             'Column05',
+             'Column06',
+             'Column07',
+             'Column08',
         ]
         
         for col, valor in enumerate(header_columns_history, start=1):
@@ -121,7 +121,7 @@ class ExcelService():
 
         hour = self.date.extract_hour()
         
-        name_file_in_path = f'UEX - {name_file.text}_{hour}.xlsx'
+        name_file_in_path = f'Report - {name_file.text}_{hour}.xlsx'
         
 
         self.file.save(path / name_file_in_path)

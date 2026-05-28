@@ -1,4 +1,4 @@
-from src.services.extraction_history_service import ExtractionHistory
+from services.extraction_history_service import ExtractionHistory
 
 
 class NavegationListUex:
@@ -9,7 +9,7 @@ class NavegationListUex:
         self.ec = ec
 
 
-    def element_list_uex_operation(self):
+    def element_list_operation(self):
         list_operation = self.wait(self.driver, 10).until(
             self.ec.visibility_of_element_located(
                 (self.by.XPATH, '/html/body/div[5]/div[2]/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]')
@@ -29,23 +29,19 @@ class NavegationListUex:
         return get_table_list_history
     
 
-    def element_title_uex(self):
-        get_uex_identification = self.wait(self.driver, 10).until(
+    def element_title(self):
+        get_identification = self.wait(self.driver, 10).until(
              self.ec.visibility_of_element_located(
                   (self.by.XPATH, '/html/body/div[23]/div[2]/div[1]/div/div/div/div[1]/div[2]/div[1]/div/div/div')
                 )
         )
 
-        return get_uex_identification
-
-
-
-
+        return get_identification
 
 
     
-    def element_list_uex(self):
-        name_uex_history = self.wait(self.driver, 10).until(
+    def element_list(self):
+        name_history = self.wait(self.driver, 10).until(
             self.ec.visibility_of_element_located(
                 (self.by.XPATH, '/html/body/div[5]/div[2]/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]/div[1]/table/tbody/tr/td[4]/div')
                 )
@@ -53,7 +49,7 @@ class NavegationListUex:
         
         
         
-        self.list_operation = self.element_list_uex_operation()
+        self.list_operation = self.element_list_operation()
 
         numbers_lines = len(self.list_operation.find_elements(self.by.TAG_NAME, 'tr'))
 
@@ -75,10 +71,10 @@ class NavegationListUex:
                     btn_operation = column[12].find_element(self.by.TAG_NAME, 'a')
                     btn_operation.click()
 
-                    title = self.element_title_uex()
+                    title = self.element_title()
                     table = self.element_table_of_datas()
 
-                    self.record = ExtractionHistory(title, table, name_uex_history)
+                    self.record = ExtractionHistory(title, table, name_history)
                     self.record.record()
 
                     btn_close_window_history = self.wait(self.driver, 10).until(

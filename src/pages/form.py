@@ -11,16 +11,16 @@ class NavegationFormUex:
     
 
     def element_drop_down_situation(self):
-        list_situacao_uex = self.wait(self.driver, 12).until(
+        list_situacao = self.wait(self.driver, 12).until(
             self.ec.visibility_of_element_located(
                 (self.by.XPATH, '//*[@id="cbAptaPagamento"]')
             )
         )
         
         
-        list_situacao_uex.send_keys(self.keys.ARROW_DOWN)
-        list_situacao_uex.send_keys(self.keys.ARROW_DOWN)
-        list_situacao_uex.send_keys(self.keys.TAB)
+        list_situacao.send_keys(self.keys.ARROW_DOWN)
+        list_situacao.send_keys(self.keys.ARROW_DOWN)
+        list_situacao.send_keys(self.keys.TAB)
 
     
     def element_radio_cnpj_option(self):

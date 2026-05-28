@@ -1,0 +1,27 @@
+XDataBot/
+│
+├── data/
+│   └── Histórico_UEX/
+│
+├── src/
+│   │
+│   ├── pages/
+│   │   ├── login.py
+│   │   ├── menu.py
+│   │   ├── uex_form.py
+│   │   └── uex_list.py
+│   │
+│   ├── services/
+│   │   ├── export_excel_service.py
+│   │   ├── extraction_history_service.py
+│   │   └── extract_date_service.py
+│   │
+│   ├── settings/
+│   │   └── config.py
+│   │
+│   └── main.py
+│
+├── .env (Deve ser criado um com as credências do sistema)
+├── .gitignore
+├── pyproject.toml
+└── README.md

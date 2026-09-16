@@ -21,6 +21,6 @@ class NavegationMenu:
     
     def element_button_search_situation(self):
         btn_consulta_situacao = self.driver.find_element(
-            self.by.XPATH, '//*[@id="ext-gen39"]/div/table/tbody/tr/td[2]/div'
+            self.by.XPATH, '//*[@id="x-menu-el-ext-comp-1057"]'
         )
         btn_consulta_situacao.click()

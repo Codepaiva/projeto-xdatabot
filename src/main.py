@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from settings.config import Settings
+# from settings.config import Settings
 
 from pages.login import NavegationLogin
 from pages.menu import NavegationMenu
@@ -18,6 +18,31 @@ class XdataBot:
   def __init__(self):
     pass
   
+  def title(self, system_name: str):
+    size_name = len(system_name)
+    
+    print('='*size_name)
+    print(system_name)
+    print('='*size_name)
+    
+  
+  def user_input_name(self):
+    name = input('Usuário: ')
+  
+    if not name:
+      print('Insira um nome de usuário válido, por favor.')
+      
+    return name
+  
+  def user_input_password(self):
+    password = input('Senha: ')
+  
+    if not password:
+      print('Insira uma senha válida, por favor.')
+      
+    return password
+  
+  
   def user_input_cnpj(self):
     cnpj = input('Insira o CNPJ: ')
   
@@ -26,12 +51,14 @@ class XdataBot:
       
     return cnpj
     
-  def run_bot(self, cnpj):
-    self.settings = Settings()  # type: ignore
-    
+ 
+  def run_bot(self, name, password, cnpj):
+    # self.settings = Settings()  #
+    URL = 'https://www.fnde.gov.br/sigpcadm/'
 
     self.driver_chrome = webdriver.Chrome()
-    self.driver_chrome.get(self.settings.URL)
+    self.driver_chrome.get(URL)
+   
 
     self.login = NavegationLogin(self.driver_chrome, By, WebDriverWait, EC)
     self.menu = NavegationMenu(self.driver_chrome, By, WebDriverWait, EC)
@@ -40,8 +67,8 @@ class XdataBot:
 
     # steps of process:
     # step login:
-    self.login.element_input_user(self.settings.USER_NAME)
-    self.login.element_input_password(self.settings.USER_PASSWORD)
+    self.login.element_input_user(name)
+    self.login.element_input_password(password)
     self.login.element_button_login()
 
     # step menu:
@@ -61,6 +88,10 @@ class XdataBot:
 
 if __name__ == '__main__':
   bot = XdataBot()
+  
+  bot.title('XdataBot - Bot Extração de Dados')
+  nome = bot.user_input_name()
+  senha = bot.user_input_password()
   cnpj = bot.user_input_cnpj()
   
-  bot.run_bot(cnpj)
+  bot.run_bot(nome, senha, cnpj)

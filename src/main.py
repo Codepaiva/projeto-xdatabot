@@ -54,7 +54,7 @@ class XdataBot:
  
   def run_bot(self, name, password, cnpj):
     # self.settings = Settings()  #
-    URL = 'https://www.fnde.gov.br/sigpcadm/'
+    URL = ''
 
     self.driver_chrome = webdriver.Chrome()
     self.driver_chrome.get(URL)
